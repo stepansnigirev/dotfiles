@@ -1,0 +1,9 @@
+# quick virtual environment activation from current folder
+alias venv="source .venv/bin/activate"
+# play audio only
+alias mpa="mpv --no-video"
+# ugly hack
+alias vim="nvim"
+# can't remember "zellij"
+alias zmux="zellij"
+

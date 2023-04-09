@@ -52,6 +52,10 @@ Then copy `.tmux.conf` to your home directory (requires powerline fonts).
 
 In `tmux` press `C+b I` to install plugins.
 
+# Zellij
+
+Another terminal multiplexer that supports sixel out of the box.
+
 # Better bash
 
 Interesting options:
@@ -78,4 +82,8 @@ For me it adds too much noize, so I have a less feature-rich version.
 - [Starship](https://starship.rs/) for more info in terminal status line, highly configurable (`cargo install starship`)
 - [nerdfonts](https://www.nerdfonts.com/) - icons in terminal, suppoorted by many cli tools including vim plugins
 - [tmux](https://github.com/tmux/tmux/wiki) - terminal multiplexer
+- [mpv](https://mpv.io/) - player, can play from youtube `nix-env -iA nixpkgs.mpv-unwrapped`
+- [yt-dlp](https://github.com/yt-dlp/yt-dlp) - youtube downloader, `pipx install yt-dlp`
+- [foot](https://codeberg.org/dnkl/foot) - wayland terminal with sixel support (`sudo apt install foot`)
+- [libsixel](https://github.com/libsixel/libsixel) - toolz for sixel graphics, i.e. `img2sixel` (`nix-env -iA nixpkgs.libsixel`)
 

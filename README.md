@@ -16,13 +16,17 @@ sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.
 
 Then in vim use `:PlugInstall`
 
-## Install nerdfont
+## Install fonts
+
+Nerdfont:
 
 ```sh
 wget https://github.com/ryanoasis/nerd-fonts/releases/download/v2.3.3/Ubuntu.zip
 unzip Ubuntu.zip -d ~/.fonts
 fc-cache -fv
 ```
+
+For powerline fonts check [this doc](https://powerline.readthedocs.io/en/master/installation/linux.html#fonts-installation)
 
 ## LSP config
 
@@ -45,6 +49,8 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 ```
 
 Then copy `.tmux.conf` to your home directory (requires powerline fonts).
+
+In `tmux` press `C+b I` to install plugins.
 
 # Better bash
 

@@ -1,4 +1,6 @@
 format = """
+${custom.mailerr}\
+${custom.mail}\
 $username\
 $hostname\
 $directory\
@@ -19,3 +21,19 @@ $status\
 $os\
 $shell\
 $character"""
+
+[python]
+symbol = " "
+
+[custom.mail]
+style = "yellow"
+symbol = "󰇮"
+command = "grep '[^[:space:]]'  ~/mail/unread"
+when = "test -s ~/mail/unread"
+format = "[$symbol $output ]($style)"
+
+[custom.mailerr]
+style = "red"
+symbol = ""
+when = "test -s ~/mail/errors"
+format = "[$symbol  ]($style)"

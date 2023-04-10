@@ -6,4 +6,5 @@ alias mpa="mpv --no-video"
 alias vim="nvim"
 # can't remember "zellij"
 alias zmux="zellij"
-
+# cat images with img2sixel
+alias icat="img2sixel"

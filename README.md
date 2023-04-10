@@ -56,6 +56,8 @@ In `tmux` press `C+b I` to install plugins.
 
 Another terminal multiplexer that supports sixel out of the box.
 
+To copy to clipboard on wayland do `sudo apt install wl-clipboard`
+
 # Better bash
 
 Interesting options:
@@ -86,4 +88,5 @@ For me it adds too much noize, so I have a less feature-rich version.
 - [yt-dlp](https://github.com/yt-dlp/yt-dlp) - youtube downloader, `pipx install yt-dlp`
 - [foot](https://codeberg.org/dnkl/foot) - wayland terminal with sixel support (`sudo apt install foot`)
 - [libsixel](https://github.com/libsixel/libsixel) - toolz for sixel graphics, i.e. `img2sixel` (`nix-env -iA nixpkgs.libsixel`)
+- [ranger](https://github.com/ranger/ranger) - file manager. `pipx install ranger-fm`
 

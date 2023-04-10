@@ -7,6 +7,8 @@ If new mail exists - writes numbers to ~/mail/unread file.
 This is then parsed by starship.rs custom widget (see config/starship.conf file)
 
 Currently accounts are hardcoded, because I'm lazy.
+
+Also plays sound on error or on new emails using mpv.
 """
 import os
 import subprocess
@@ -15,6 +17,9 @@ DIRNAME = os.path.expanduser("~/mail")
 UNREAD_FILE = os.path.join(DIRNAME, "unread")
 ERRORS_FILE = os.path.join(DIRNAME, "errors")
 ACCOUNTS = ["personal", "planqc", "swan"]
+# sounds
+NOTIFICATION = os.path.join(DIRNAME, "notify.mp3")
+ERRORSOUND = os.path.join(DIRNAME, "error.mp3")
 
 def check_unread(dir_path = DIRNAME):
     threads = set()
@@ -34,6 +39,7 @@ def main():
     if result.returncode != 0:
         with open(ERRORS_FILE, "w") as f:
             f.write(f"errorcode {result.returncode}")
+        subprocess.run(["mpv", ERRORSOUND], capture_output=True)
     else:
         res = [
             check_unread(os.path.join(DIRNAME, acc))[0]
@@ -41,9 +47,16 @@ def main():
         ]
         with open(ERRORS_FILE, "w") as f:
             pass
+        with open(UNREAD_FILE, "r") as f:
+            prev = f.read()
         with open(UNREAD_FILE, "w") as f:
             if sum(res) > 0:
                 f.write("/".join([str(u) for u in res]))
+        prevres = 0
+        if prev:
+            prevres = sum([int(v) for v in prev.split("/")])
+        if prevres < sum(res):
+            subprocess.run(["mpv", NOTIFICATION], capture_output=True)
 
 if __name__ == "__main__":
     main()

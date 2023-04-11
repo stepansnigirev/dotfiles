@@ -1,0 +1,2 @@
+#!/bin/bash
+(cat <(grep -c '\- \[[x+]\]'  TODO.md) <(echo '/') <(grep -c '\- \[[x+ ]\]' TODO.md)) | tr -d '\n'

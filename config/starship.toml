@@ -1,6 +1,7 @@
 format = """
 ${custom.mailerr}\
 ${custom.mail}\
+${custom.todo}\
 $username\
 $hostname\
 $directory\
@@ -37,3 +38,10 @@ style = "red"
 symbol = ""
 when = "test -s ~/mail/errors"
 format = "[$symbol  ]($style)"
+
+[custom.todo]
+detect_files = ["TODO", "TODO.md"]
+style = "purple"
+symbol = ""
+command = "todo_summary"
+format = "[$symbol $output ]($style)"

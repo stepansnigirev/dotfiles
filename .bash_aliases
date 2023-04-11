@@ -10,3 +10,4 @@ alias zmux="zellij"
 alias icat="img2sixel"
 # sync mail
 alias mailsync="python3 ~/mail/syncer.py"
+alias wezterm='~/dist/wezterm.AppImage'

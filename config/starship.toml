@@ -1,4 +1,5 @@
 format = """
+${time}\
 ${custom.mailerr}\
 ${custom.mail}\
 ${custom.todo}\
@@ -17,17 +18,24 @@ $nix_shell\
 $env_var\
 $sudo\
 $battery\
-$time\
 $status\
 $os\
 $shell\
 $character"""
 
+[time]
+disabled = false
+style = "white dimmed"
+format = "[󱑎 $time ]($style)"
+time_format = '%H:%M'
+
 [python]
+style = "yellow bold"
+format = "[${symbol}$virtualenv ]($style)"
 symbol = " "
 
 [custom.mail]
-style = "yellow"
+style = "dimmed white"
 symbol = "󰇮"
 command = "grep '[^[:space:]]'  ~/mail/unread"
 when = "test -s ~/mail/unread"
@@ -40,8 +48,8 @@ when = "test -s ~/mail/errors"
 format = "[$symbol  ]($style)"
 
 [custom.todo]
-detect_files = ["TODO", "TODO.md"]
-style = "purple"
+detect_files = ["TODO.md"]
+style = "dimmed white"
 symbol = ""
 command = "todo_summary"
 format = "[$symbol $output ]($style)"

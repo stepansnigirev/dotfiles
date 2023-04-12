@@ -1,5 +1,4 @@
 format = """
-${custom.time}\
 $battery\
 ${custom.mailerr}\
 ${custom.mail}\
@@ -23,23 +22,24 @@ $os\
 $shell\
 $character"""
 
+add_newline = false
+
+[directory]
+style = "blue bold"
+
 [python]
 style = "yellow bold"
 format = "[${symbol}$virtualenv ]($style)"
 symbol = " "
 
+[rust]
+style = "red bold"
+format = "[${symbol}]($style)"
+
 [[battery.display]]
 threshold = 25
 style = 'bold red'
 discharging_symbol = " "
-
-[custom.time]
-style = "white dimmed"
-symbol = "󱑎"
-command = "date +%H:%M"
-# time is displayed unless TMUX is used (it has time in statusbar)
-when = "[[ ! -v TMUX ]]"
-format = "[$symbol $output ]($style)"
 
 [custom.mail]
 style = "dimmed white"

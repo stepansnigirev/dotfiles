@@ -78,7 +78,7 @@ async def main():
                 f.write(stdout)
                 f.write(stderr)
         # play error sound
-        res = await run_command(f"mpv {ERRORSOUND}")
+        res = await run_command(f"play {ERRORSOUND}")
     else:
         res = [
             check_unread(os.path.join(DIRNAME, acc))[0]
@@ -97,7 +97,7 @@ async def main():
             prevres = sum([int(v) for v in prev.split("/")])
         if prevres < sum(res):
             # play notification sound
-            res = await run_command(f"mpv {NOTIFICATION}")
+            res = await run_command(f"play {NOTIFICATION}")
 
 if __name__ == '__main__':
     asyncio.run(main())

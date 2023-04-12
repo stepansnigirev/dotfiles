@@ -32,6 +32,7 @@ set wildmenu
 autocmd FileType make setlocal noexpandtab
 autocmd FileType html setlocal shiftwidth=2 softtabstop=2 expandtab
 autocmd FileType javascript setlocal shiftwidth=2 softtabstop=2 expandtab
+autocmd FileType css setlocal shiftwidth=2 softtabstop=2 expandtab
 
 " Command to do ctags
 command! MakeTags !ctags --exclude=".venv" -R .

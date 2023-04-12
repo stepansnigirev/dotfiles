@@ -8,6 +8,6 @@ alias vim="nvim"
 alias zmux="zellij"
 # cat images with img2sixel
 alias icat="img2sixel"
-# sync mail
+# mail
 alias mailsync="python3 ~/mail/syncer.py"
-alias wezterm='~/dist/wezterm.AppImage'
+alias mutt="neomutt"

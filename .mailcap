@@ -1,0 +1,4 @@
+#text/html; zellij action new-pane -c -- w3m -sixel -config ~/.config/w3m/config -T text/html -F %s; nametemplate=%s.html
+text/html; w3m -I %{charset} -T text/html; copiousoutput
+image/*; (clear && img2sixel %s); needsterminal
+

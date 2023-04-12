@@ -1,5 +1,6 @@
 format = """
-${time}\
+${custom.time}\
+$battery\
 ${custom.mailerr}\
 ${custom.mail}\
 ${custom.todo}\
@@ -17,26 +18,33 @@ $rust\
 $nix_shell\
 $env_var\
 $sudo\
-$battery\
 $status\
 $os\
 $shell\
 $character"""
-
-[time]
-disabled = false
-style = "white dimmed"
-format = "[󱑎 $time ]($style)"
-time_format = '%H:%M'
 
 [python]
 style = "yellow bold"
 format = "[${symbol}$virtualenv ]($style)"
 symbol = " "
 
+[[battery.display]]
+threshold = 25
+style = 'bold red'
+discharging_symbol = " "
+
+[custom.time]
+style = "white dimmed"
+symbol = "󱑎"
+command = "date +%H:%M"
+# time is displayed unless TMUX is used (it has time in statusbar)
+when = "[[ ! -v TMUX ]]"
+format = "[$symbol $output ]($style)"
+
 [custom.mail]
 style = "dimmed white"
 symbol = "󰇮"
+# checks and outputs content of the ~/mail/unread file (populated by the sync script)
 command = "grep '[^[:space:]]'  ~/mail/unread"
 when = "test -s ~/mail/unread"
 format = "[$symbol $output ]($style)"
@@ -44,6 +52,7 @@ format = "[$symbol $output ]($style)"
 [custom.mailerr]
 style = "red"
 symbol = ""
+# checks if ~/mail/errors file is not empty (populated by sync script)
 when = "test -s ~/mail/errors"
 format = "[$symbol  ]($style)"
 
@@ -51,5 +60,7 @@ format = "[$symbol  ]($style)"
 detect_files = ["TODO.md"]
 style = "dimmed white"
 symbol = ""
+# todo_summary greps TODO.md file and counts number of completed tasks "- [x]" vs total
+# (cat <(grep -c '\- \[[x+]\]'  TODO.md) <(echo '/') <(grep -c '\- \[[x+ ]\]' TODO.md)) | tr -d '\n'
 command = "todo_summary"
 format = "[$symbol $output ]($style)"

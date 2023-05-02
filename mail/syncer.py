@@ -18,10 +18,8 @@ from typing import Optional, List, Tuple
 DIRNAME = os.path.abspath(os.path.expanduser("~/mail"))
 UNREAD_FILE = os.path.join(DIRNAME, "unread")
 ERRORS_FILE = os.path.join(DIRNAME, "errors")
+NOTIFICATIONS_FILE = os.path.join(DIRNAME, "notifications")
 ACCOUNTS = ["personal", "planqc", "swan"]
-# sounds
-NOTIFICATION = os.path.join(DIRNAME, "notify.mp3")
-ERRORSOUND = os.path.join(DIRNAME, "error.mp3")
 
 async def run_command(command: str) -> Tuple[int, bytes, bytes]:
     process = await asyncio.create_subprocess_shell(
@@ -77,8 +75,6 @@ async def main():
                 f.write(f"errorcode {returncode}\n".encode())
                 f.write(stdout)
                 f.write(stderr)
-        # play error sound
-        res = await run_command(f"play {ERRORSOUND}")
     else:
         res = [
             check_unread(os.path.join(DIRNAME, acc))[0]
@@ -96,8 +92,10 @@ async def main():
         if prev:
             prevres = sum([int(v) for v in prev.split("/")])
         if prevres < sum(res):
-            # play notification sound
-            res = await run_command(f"play {NOTIFICATION}")
+            # notify zmux
+            new_emails = sum(res)-prevres
+            with open(NOTIFICATIONS_FILE, "w") as f:
+                f.write(f"{new_emails} new emails!") 
 
 if __name__ == '__main__':
     asyncio.run(main())

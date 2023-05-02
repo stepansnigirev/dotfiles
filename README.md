@@ -90,4 +90,5 @@ For me it adds too much noize, so I have a less feature-rich version.
 - [libsixel](https://github.com/libsixel/libsixel) - toolz for sixel graphics, i.e. `img2sixel` (`nix-env -iA nixpkgs.libsixel`)
 - [ranger](https://github.com/ranger/ranger) - file manager. `pipx install ranger-fm`
 - [glow](https://github.com/charmbracelet/glow) - markdown render tui
+- [delta](https://github.com/dandavison/delta) - nice git diff tool
 

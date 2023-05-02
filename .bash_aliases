@@ -11,3 +11,7 @@ alias icat="img2sixel"
 # mail
 alias mailsync="python3 ~/mail/syncer.py"
 alias mutt="neomutt"
+# matrix
+alias elm="iamb"
+# w3m with sixel images
+alias w3im="w3m -o display_image=true -o inline_img_protocol=2"

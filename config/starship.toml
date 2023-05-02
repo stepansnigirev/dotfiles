@@ -1,7 +1,5 @@
 format = """
 $battery\
-${custom.mailerr}\
-${custom.mail}\
 ${custom.todo}\
 $username\
 $hostname\

@@ -91,4 +91,5 @@ For me it adds too much noize, so I have a less feature-rich version.
 - [ranger](https://github.com/ranger/ranger) - file manager. `pipx install ranger-fm`
 - [glow](https://github.com/charmbracelet/glow) - markdown render tui
 - [delta](https://github.com/dandavison/delta) - nice git diff tool
+- [jump](https://github.com/gsamokovarov/jump) - quick jump between folders
 

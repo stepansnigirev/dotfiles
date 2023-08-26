@@ -1,5 +1,9 @@
 env:
   TERM: xterm-256color
+font:
+  normal:
+    family: JetBrains Mono
+
 # TokyoNight Alacritty Colors
 colors:
   # Default colors

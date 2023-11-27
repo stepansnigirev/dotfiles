@@ -21,12 +21,10 @@ Then in vim use `:PlugInstall`
 Nerdfont:
 
 ```sh
-wget https://github.com/ryanoasis/nerd-fonts/releases/download/v2.3.3/Ubuntu.zip
-unzip Ubuntu.zip -d ~/.fonts
+wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.1.1/JetBrainsMono.zip
+unzip JetBrainsMono.zip -d ~/.fonts
 fc-cache -fv
 ```
-
-For powerline fonts check [this doc](https://powerline.readthedocs.io/en/master/installation/linux.html#fonts-installation)
 
 ## LSP config
 
@@ -48,15 +46,7 @@ Install [TMP](https://github.com/tmux-plugins/tpm):
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 ```
 
-Then copy `.tmux.conf` to your home directory (requires powerline fonts).
-
 In `tmux` press `C+b I` to install plugins.
-
-# Zellij
-
-Another terminal multiplexer that supports sixel out of the box.
-
-To copy to clipboard on wayland do `sudo apt install wl-clipboard`
 
 # Better bash
 

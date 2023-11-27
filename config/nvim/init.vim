@@ -73,7 +73,7 @@ call plug#begin('~/.local/share/nvim/plugged')
  " delete all buffers except current one
  Plug 'numtostr/BufOnly.nvim', { 'on': 'BufOnly' }
  " theme
- Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
+ " Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
 call plug#end()
 
 " color schemes

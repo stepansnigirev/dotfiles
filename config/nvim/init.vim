@@ -31,16 +31,21 @@ set wildmenu
 " Makefile should use tabs
 autocmd FileType make setlocal noexpandtab
 autocmd FileType html setlocal shiftwidth=2 softtabstop=2 expandtab
+autocmd FileType proto setlocal shiftwidth=2 softtabstop=2 expandtab
 autocmd FileType javascript setlocal shiftwidth=2 softtabstop=2 expandtab
 autocmd FileType css setlocal shiftwidth=2 softtabstop=2 expandtab
+autocmd FileType typescript setlocal shiftwidth=2 softtabstop=2 expandtab
+autocmd FileType rust setlocal shiftwidth=2 softtabstop=2 expandtab
 
 " Command to do ctags
 command! MakeTags !ctags --exclude=".venv" -R .
+command! Nolsp lua vim.diagnostic.disable(0)
 
 let g:python3_host_prog = '/home/ss/.pyenv/versions/neovim3/bin/python'
 let g:python_host_prog = '/home/ss/.pyenv/versions/neovim3/bin/python'
 
 au BufRead,BufNewFile *.pys set filetype=python
+au BufRead,BufNewFile *.pys lua vim.diagnostic.disable(0)
 
 call plug#begin('~/.local/share/nvim/plugged')
 
@@ -65,6 +70,10 @@ call plug#begin('~/.local/share/nvim/plugged')
  Plug 'folke/noice.nvim'
  Plug 'MunifTanjim/nui.nvim'
  Plug 'rcarriga/nvim-notify'
+ " delete all buffers except current one
+ Plug 'numtostr/BufOnly.nvim', { 'on': 'BufOnly' }
+ " theme
+ Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
 call plug#end()
 
 " color schemes
@@ -76,6 +85,7 @@ endif
 " colorscheme codedark
 " colorscheme deep-space
 colorscheme tokyonight-moon
+" colorscheme catppuccin
 
 " open new split panes to right and below
 set splitright
@@ -100,6 +110,12 @@ nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
+
+" tab to switch between buffers
+nnoremap <Tab> :bn<CR>
+nnoremap <S-Tab> :bp<CR>
+" kill all buffers except current
+nnoremap <leader>w :BufOnly<CR>
 
 :lua << EOF
     local opts = { noremap=true, silent=true }
@@ -163,6 +179,8 @@ require('lualine').setup {
     theme = 'auto',
     component_separators = { left = '', right = ''},
     section_separators = { left = '', right = ''},
+    --component_separators = { left = ' | ', right = ' | '},
+    --section_separators = { left = '', right = ''},
     disabled_filetypes = {
       statusline = {},
       winbar = {},

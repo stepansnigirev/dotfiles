@@ -4,7 +4,6 @@
 
 ```sh
 cp -r ./config/* ~/.config/
-cp .tmux.conf ~/
 ```
 
 ## Install Vim-Plug

@@ -81,4 +81,5 @@ For me it adds too much noize, so I have a less feature-rich version.
 - [glow](https://github.com/charmbracelet/glow) - markdown render tui
 - [delta](https://github.com/dandavison/delta) - nice git diff tool
 - [jump](https://github.com/gsamokovarov/jump) - quick jump between folders
+- [notcurses](https://github.com/dankamongmen/notcurses/) - lib for tui + ncplayer terminal viewer
 

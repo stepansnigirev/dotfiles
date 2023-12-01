@@ -6,8 +6,8 @@ alias mpa="mpv --no-video"
 alias vim="nvim"
 # can't remember "zellij"
 alias zmux="zellij"
-# cat images with img2sixel
-alias icat="img2sixel"
+# cat images with notcurses
+alias icat="ncplayer -s scale"
 # mail
 #alias mailsync="python3 ~/mail/syncer.py"
 alias mailsync="/home/ss/dev/personal/mail/.venv/bin/python3 -m emailer.syncer"

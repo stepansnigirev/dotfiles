@@ -83,3 +83,24 @@ For me it adds too much noize, so I have a less feature-rich version.
 - [jump](https://github.com/gsamokovarov/jump) - quick jump between folders
 - [notcurses](https://github.com/dankamongmen/notcurses/) - lib for tui + ncplayer terminal viewer
 
+## Installed with nix-env:
+
+```sh
+alacritty
+bat
+delta
+fd
+gimp
+glow
+inkscape
+jump
+mpv-with-scripts
+neovim
+notcurses
+ripgrep
+starship
+tealdeer
+tmux
+vlc
+yt-dlp
+```

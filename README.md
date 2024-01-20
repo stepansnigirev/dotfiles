@@ -82,6 +82,7 @@ For me it adds too much noize, so I have a less feature-rich version.
 - [delta](https://github.com/dandavison/delta) - nice git diff tool
 - [jump](https://github.com/gsamokovarov/jump) - quick jump between folders
 - [notcurses](https://github.com/dankamongmen/notcurses/) - lib for tui + ncplayer terminal viewer
+- [eza](https://github.com/eza-community/eza) - better `ls`
 
 ## Installed with nix-env:
 
@@ -89,6 +90,7 @@ For me it adds too much noize, so I have a less feature-rich version.
 alacritty
 bat
 delta
+eza
 fd
 gimp
 glow

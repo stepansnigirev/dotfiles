@@ -35,3 +35,6 @@ TERM = "xterm-256color"
 
 [font.normal]
 family = "JetBrainsMono NerdFont"
+
+[shell]
+program = "tmux"

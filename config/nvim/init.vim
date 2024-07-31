@@ -65,7 +65,7 @@ call plug#begin('~/.local/share/nvim/plugged')
  " If you want to have icons in your statusline choose one of these
  "Plug 'kyazdani42/nvim-web-devicons'
  Plug 'nvim-tree/nvim-web-devicons' " Recommended (for coloured icons)
- Plug 'akinsho/bufferline.nvim', { 'tag': 'v3.*' }
+ Plug 'akinsho/bufferline.nvim', { 'tag': 'v4.6.*' }
  " cmdline goes up, nicer ui
  Plug 'folke/noice.nvim'
  Plug 'MunifTanjim/nui.nvim'

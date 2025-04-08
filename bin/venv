@@ -3,6 +3,10 @@ SUCCESS='\033[0;32m✓ '
 ERROR='\033[0;31m⚠ '
 NC='\033[0m' # No Color
 
+# Set the maximum depth to search for .venv folder (adjust this as needed)
+MAX_DEPTH=5
+VENVS="$HOME/.venvs"
+
 # Function to search for the .venv folder
 search_venv() {
     local dir="$1"
@@ -11,28 +15,25 @@ search_venv() {
     for ((i=0; i<=max_depth; i++)); do
         if [ -d "$dir/.venv" ]; then
             echo "$dir/.venv"
-            return
+            return 0
         fi
         dir="$dir/.."
     done
-
-    echo "Error: No .venv folder found in current directory or any parent directory up to $max_depth levels."
+    return 1
 }
-
-# Set the maximum depth to search for .venv folder (adjust this as needed)
-MAX_DEPTH=5
-VENVS="$HOME/.venvs"
 
 if [ $# -eq 0 ]; then
   # Get the current directory
   current_dir=$(pwd)
 
   # Search for the .venv folder
-  venv_path=$(search_venv "$current_dir" "$MAX_DEPTH")
-
-  if [ -n "$venv_path" ]; then
+  if venv_path=$(search_venv "$current_dir" "$MAX_DEPTH"); then
     source "$venv_path/bin/activate"
-    echo -e "${SUCCESS}Activated virtual environment in: $venv_path${NC}"
+    normalized_path=$(realpath "$venv_path")
+    pretty_path="${normalized_path/#$HOME/\~}"
+    echo -e "${SUCCESS}Activated virtual environment in: $pretty_path${NC}"
+  else
+    echo -e "${ERROR}No .venv folder found in current directory or any parent directory up to $MAX_DEPTH levels.${NC}"
   fi
 
 elif [ "$1" == "-c" ] && [ $# -eq 2 ]; then

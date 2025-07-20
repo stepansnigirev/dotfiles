@@ -38,3 +38,13 @@ family = "JetBrainsMono NerdFont"
 
 [shell]
 program = "tmux"
+
+[[keyboard.bindings]]
+key = "Return"
+mods = "Control"
+chars = "\u001b[13;5u"
+
+[[keyboard.bindings]]
+key = "Return"
+mods = "Shift"
+chars = "\u001b[13;2u"

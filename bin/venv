@@ -36,17 +36,33 @@ if [ $# -eq 0 ]; then
     echo -e "${ERROR}No .venv folder found in current directory or any parent directory up to $MAX_DEPTH levels.${NC}"
   fi
 
-elif [ "$1" == "-c" ] && [ $# -eq 2 ]; then
-  venv_name="$2"
-  venv_path="$VENVS/$venv_name"
-  if [ -d "$venv_path" ]; then
-    echo -e "${ERROR}Virtual environment '$venv_name' already exists.${NC}"
+elif [ "$1" == "-c" ]; then
+  if [ $# -eq 2 ]; then
+    # Named venv in central location
+    venv_name="$2"
+    venv_path="$VENVS/$venv_name"
+    if [ -d "$venv_path" ]; then
+      echo -e "${ERROR}Virtual environment '$venv_name' already exists.${NC}"
+    else
+      python3 -m venv "$venv_path"
+
+      echo -e "${SUCCESS}Virtual environment '$venv_name' created successfully.${NC}"
+    fi
+    source "$venv_path/bin/activate"
+  elif [ $# -eq 1 ]; then
+    # No name: create .venv in current directory
+
+    venv_path="$(pwd)/.venv"
+    if [ -d "$venv_path" ]; then
+        echo -e "${ERROR}.venv already exists in current directory.${NC}"
+    else
+        python3 -m venv "$venv_path"
+        echo -e "${SUCCESS}.venv created successfully in current directory.${NC}"
+    fi
+    source "$venv_path/bin/activate"
   else
-    python3 -m venv "$venv_path"
-    echo -e "${SUCCESS}Virtual environment '$venv_name' created successfully.${NC}"
+    echo -e "${ERROR}Usage: $0 -c [name]${NC}"
   fi
-  activate_script="$VENVS/$venv_name/bin/activate"
-  source "$activate_script"
 elif [ $# -eq 1 ]; then
   venv_name="$1"
   activate_script="$VENVS/$venv_name/bin/activate"

@@ -14,5 +14,5 @@ alias mutt="neomutt"
 alias elm="iamb"
 # w3m with sixel images
 alias w3im="w3m -o display_image=true -o inline_img_protocol=2"
-alias qcr="qcontrol3-client upload_and_run_single"
 alias ls="eza"
+alias cat="batcat"

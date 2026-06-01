@@ -41,8 +41,8 @@ autocmd FileType rust setlocal shiftwidth=2 softtabstop=2 expandtab
 command! MakeTags !ctags --exclude=".venv" -R .
 command! Nolsp lua vim.diagnostic.disable(0)
 
-let g:python3_host_prog = '/home/ss/.pyenv/versions/neovim3/bin/python'
-let g:python_host_prog = '/home/ss/.pyenv/versions/neovim3/bin/python'
+"let g:python3_host_prog = '/home/ss/.pyenv/versions/neovim3/bin/python'
+"let g:python_host_prog = '/home/ss/.pyenv/versions/neovim3/bin/python'
 
 au BufRead,BufNewFile *.pys set filetype=python
 au BufRead,BufNewFile *.pys lua vim.diagnostic.disable(0)
@@ -69,7 +69,7 @@ call plug#begin('~/.local/share/nvim/plugged')
  " cmdline goes up, nicer ui
  Plug 'folke/noice.nvim'
  Plug 'MunifTanjim/nui.nvim'
- Plug 'rcarriga/nvim-notify'
+ " Plug 'rcarriga/nvim-notify'
  " delete all buffers except current one
  Plug 'numtostr/BufOnly.nvim', { 'on': 'BufOnly' }
  " theme
@@ -153,14 +153,17 @@ nnoremap <leader>w :BufOnly<CR>
     -- Configure `ruff-lsp`.
     -- See: https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#ruff_lsp
     -- For the default config, along with instructions on how to customize the settings
-    require('lspconfig').ruff_lsp.setup {
-      on_attach = on_attach,
-    }
+    if vim.lsp and vim.lsp.config then
+      vim.lsp.config('ruff', { on_attach = on_attach })
+      vim.lsp.enable('ruff')
+    else
+      require('lspconfig').ruff_lsp.setup { on_attach = on_attach }
+    end
 EOF
 
 lua << END
+-- vim.notify = require("notify")
 require("noice").setup()
-vim.notify = require("notify")
 
 require("bufferline").setup{
     highlights = {

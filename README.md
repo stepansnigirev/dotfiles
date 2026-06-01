@@ -80,9 +80,11 @@ For me it adds too much noize, so I have a less feature-rich version.
 - [ranger](https://github.com/ranger/ranger) - file manager. `pipx install ranger-fm`
 - [glow](https://github.com/charmbracelet/glow) - markdown render tui
 - [delta](https://github.com/dandavison/delta) - nice git diff tool
-- [jump](https://github.com/gsamokovarov/jump) - quick jump between folders
+- [zoxide](https://github.com/ajeetdsouza/zoxide) - quick jump between folders
+- [fzf](https://github.com/junegunn/fzf) - fuzzy finder (required by zoxide for interactive search)
 - [notcurses](https://github.com/dankamongmen/notcurses/) - lib for tui + ncplayer terminal viewer
 - [eza](https://github.com/eza-community/eza) - better `ls`
+- [viu](https://github.com/atanunq/viu) - image viewer in terminal
 
 ## Installed with nix-env:
 
@@ -95,7 +97,6 @@ fd
 gimp
 glow
 inkscape
-jump
 mpv-with-scripts
 neovim
 notcurses

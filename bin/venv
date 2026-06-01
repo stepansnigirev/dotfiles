@@ -44,7 +44,7 @@ elif [ "$1" == "-c" ]; then
     if [ -d "$venv_path" ]; then
       echo -e "${ERROR}Virtual environment '$venv_name' already exists.${NC}"
     else
-      python3 -m venv "$venv_path"
+      uv venv "$venv_path"
 
       echo -e "${SUCCESS}Virtual environment '$venv_name' created successfully.${NC}"
     fi
@@ -56,7 +56,7 @@ elif [ "$1" == "-c" ]; then
     if [ -d "$venv_path" ]; then
         echo -e "${ERROR}.venv already exists in current directory.${NC}"
     else
-        python3 -m venv "$venv_path"
+        uv venv "$venv_path"
         echo -e "${SUCCESS}.venv created successfully in current directory.${NC}"
     fi
     source "$venv_path/bin/activate"

@@ -8,11 +8,6 @@ alias vim="nvim"
 alias zmux="zellij"
 # cat images with notcurses
 alias icat="ncplayer -s scale"
-# mail
-alias mutt="neomutt"
-# matrix
-alias elm="iamb"
-# w3m with sixel images
-alias w3im="w3m -o display_image=true -o inline_img_protocol=2"
 alias ls="eza"
 alias cat="batcat"
+alias icat="viu"

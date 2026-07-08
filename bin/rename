@@ -1,0 +1,49 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+dry_run=false
+prefix=""
+
+while [[ $# -gt 0 ]]; do
+    case "$1" in
+        -n|--dry-run)
+            dry_run=true
+            ;;
+        -p|--prefix)
+            prefix="$2"
+            shift
+            ;;
+        *)
+            echo "Unknown argument: $1" >&2
+            echo "Usage: $0 [--dry-run] [--prefix PREFIX]" >&2
+            exit 1
+            ;;
+    esac
+    shift
+done
+
+i=1
+
+while IFS= read -r file; do
+    [[ -e "$file" ]] || continue
+
+    dir=$(dirname -- "$file")
+    base=$(basename -- "$file")
+
+    if [[ "$base" == *.* ]]; then
+        ext=".${base##*.}"
+    else
+        ext=""
+    fi
+
+    new_name=$(printf "%s%02d%s" "$prefix" "$i" "$ext")
+    new_path="$dir/$new_name"
+
+    echo "$file -> $new_path"
+
+    if [[ "$dry_run" == false ]]; then
+        mv -- "$file" "$new_path"
+    fi
+
+    ((i++))
+done

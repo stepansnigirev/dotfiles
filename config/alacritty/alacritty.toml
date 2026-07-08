@@ -36,8 +36,8 @@ TERM = "xterm-256color"
 [font.normal]
 family = "JetBrainsMono NerdFont"
 
-[shell]
-program = "tmux"
+# [terminal.shell]
+# program = "tmux"
 
 [[keyboard.bindings]]
 key = "Return"

@@ -27,7 +27,7 @@ fc-cache -fv
 
 ## LSP config
 
-Python: uses `ruff-lsp`, install with `pip` or `pipx`
+Python: uses `ruff`, install with `uv`, `pip` or `pipx`
 
 ## Install `ctags`
 
@@ -47,63 +47,25 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 In `tmux` press `C+b I` to install plugins.
 
-# Better bash
-
-Interesting options:
-- [starship](https://starship.rs/) is my preferred one
-- default [powerline](https://github.com/b-ryan/powerline-shell), written in python so it's a bit laggy
-- [powerline-rust](https://github.com/cirho/powerline-rust) which works reasonably well
-
-# LazyVim
-
-An interesting project is [`LazyVim`](https://www.lazyvim.org/) - it requires pretty
-recent neovim, that can be downloaded from [neovim repo](https://github.com/neovim/neovim/releases/tag/stable).
-
-Also requires `ripgrep` and `fd-find` that can be installed with `cargo`.
-
-For me it adds too much noize, so I have a less feature-rich version.
-
 # Toolz
 
-- [Neovim](https://neovim.io/) - a better version of vim (`nix-env -iA nixpkgs.neovim`)
+- [neovim](https://neovim.io/) - a better version of vim (`nix-env -iA nixpkgs.neovim`)
 - [ripgrep](https://github.com/BurntSushi/ripgrep) - nice replacement for `grep` (`cargo install ripgrep`)
 - [fd-find](https://github.com/sharkdp/fd) - convenient file search (`cargo install fd-find`)
 - [bat](https://github.com/sharkdp/bat) - better `cat` (`cargo install bat`)
 - [tldr](https://tldr.sh/) - condensed help on unix commands (rust client: `cargo install tealdeer`)
-- [Starship](https://starship.rs/) for more info in terminal status line, highly configurable (`cargo install starship`)
+- [starship](https://starship.rs/) for more info in terminal status line, highly configurable (`cargo install starship`)
 - [nerdfonts](https://www.nerdfonts.com/) - icons in terminal, suppoorted by many cli tools including vim plugins
 - [tmux](https://github.com/tmux/tmux/wiki) - terminal multiplexer
 - [mpv](https://mpv.io/) - player, can play from youtube `nix-env -iA nixpkgs.mpv-unwrapped`
 - [yt-dlp](https://github.com/yt-dlp/yt-dlp) - youtube downloader, `pipx install yt-dlp`
 - [foot](https://codeberg.org/dnkl/foot) - wayland terminal with sixel support (`sudo apt install foot`)
 - [libsixel](https://github.com/libsixel/libsixel) - toolz for sixel graphics, i.e. `img2sixel` (`nix-env -iA nixpkgs.libsixel`)
-- [ranger](https://github.com/ranger/ranger) - file manager. `pipx install ranger-fm`
 - [glow](https://github.com/charmbracelet/glow) - markdown render tui
-- [delta](https://github.com/dandavison/delta) - nice git diff tool
+- [delta](https://github.com/dandavison/delta) - nice git diff tool (`cargo install git-delta`)
 - [zoxide](https://github.com/ajeetdsouza/zoxide) - quick jump between folders
-- [fzf](https://github.com/junegunn/fzf) - fuzzy finder (required by zoxide for interactive search)
+- [fzf](https://github.com/junegunn/fzf) - fuzzy finder (required by zoxide for interactive search) - `sudo apt install fzf`
 - [notcurses](https://github.com/dankamongmen/notcurses/) - lib for tui + ncplayer terminal viewer
 - [eza](https://github.com/eza-community/eza) - better `ls`
 - [viu](https://github.com/atanunq/viu) - image viewer in terminal
 
-## Installed with nix-env:
-
-```sh
-alacritty
-bat
-delta
-eza
-fd
-gimp
-glow
-inkscape
-mpv-with-scripts
-neovim
-notcurses
-ripgrep
-starship
-tealdeer
-tmux
-vlc
-yt-dlp
-```

@@ -37,16 +37,6 @@ It is useful for jumping to function definition and autocomplete.
 sudo apt install exuberant-ctags
 ```
 
-# Tmux
-
-Install [TMP](https://github.com/tmux-plugins/tpm):
-
-```sh
-git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-```
-
-In `tmux` press `C+b I` to install plugins.
-
 # Toolz
 
 - [neovim](https://neovim.io/) - a better version of vim (`nix-env -iA nixpkgs.neovim`)
@@ -68,4 +58,4 @@ In `tmux` press `C+b I` to install plugins.
 - [notcurses](https://github.com/dankamongmen/notcurses/) - lib for tui + ncplayer terminal viewer
 - [eza](https://github.com/eza-community/eza) - better `ls`
 - [viu](https://github.com/atanunq/viu) - image viewer in terminal
-
+- [gah](https://github.com/get-gah/gah) - install packages from github releases

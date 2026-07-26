@@ -49,10 +49,9 @@ sudo apt install exuberant-ctags
 - [tmux](https://github.com/tmux/tmux/wiki) - terminal multiplexer
 - [mpv](https://mpv.io/) - player, can play from youtube `nix-env -iA nixpkgs.mpv-unwrapped`
 - [yt-dlp](https://github.com/yt-dlp/yt-dlp) - youtube downloader, `pipx install yt-dlp`
-- [foot](https://codeberg.org/dnkl/foot) - wayland terminal with sixel support (`sudo apt install foot`)
-- [libsixel](https://github.com/libsixel/libsixel) - toolz for sixel graphics, i.e. `img2sixel` (`nix-env -iA nixpkgs.libsixel`)
 - [glow](https://github.com/charmbracelet/glow) - markdown render tui
 - [delta](https://github.com/dandavison/delta) - nice git diff tool (`cargo install git-delta`)
+- [lazygit](https://github.com/jesseduffield/lazygit) - git tui (`gah install lazygit`)
 - [zoxide](https://github.com/ajeetdsouza/zoxide) - quick jump between folders
 - [fzf](https://github.com/junegunn/fzf) - fuzzy finder (required by zoxide for interactive search) - `sudo apt install fzf`
 - [notcurses](https://github.com/dankamongmen/notcurses/) - lib for tui + ncplayer terminal viewer

@@ -12,7 +12,7 @@ set autoindent              " indent a new line the same amount as the line just
 set relativenumber          " add line numbers
 set number!                 " keep current line number
 set wildmode=longest,list   " get bash-like tab completions
-set cc=88                   " set an 80 column border for good coding style
+set cc=88                   " set an 88 column border for good coding style
 filetype plugin indent on   " allow auto-indenting depending on file type
 syntax on                   " syntax highlighting
 set mouse=a                 " enable mouse click
@@ -40,9 +40,6 @@ autocmd FileType rust setlocal shiftwidth=2 softtabstop=2 expandtab
 " Command to do ctags
 command! MakeTags !ctags --exclude=".venv" -R .
 command! Nolsp lua vim.diagnostic.disable(0)
-
-"let g:python3_host_prog = '/home/ss/.pyenv/versions/neovim3/bin/python'
-"let g:python_host_prog = '/home/ss/.pyenv/versions/neovim3/bin/python'
 
 au BufRead,BufNewFile *.pys set filetype=python
 au BufRead,BufNewFile *.pys lua vim.diagnostic.disable(0)
@@ -80,6 +77,7 @@ call plug#end()
 if (has("termguicolors"))
  set termguicolors
 endif
+
 " colorscheme evening
 " colorscheme dracula
 " colorscheme codedark

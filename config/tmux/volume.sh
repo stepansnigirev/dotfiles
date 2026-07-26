@@ -3,7 +3,7 @@
 volume_info=$(wpctl get-volume @DEFAULT_AUDIO_SINK@ 2>/dev/null)
 
 if [[ -z "$volume_info" ]]; then
-    printf '󰖁 N/A '
+    printf ""
     exit 0
 fi
 

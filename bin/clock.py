@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-
 import curses
 import time
 from datetime import datetime
@@ -85,7 +84,6 @@ def fit_text(stdscr, text):
             "     ██",
             "███████",
         ],
-
         ":": [
             "  ",
             "██",
@@ -97,7 +95,6 @@ def fit_text(stdscr, text):
 
     base_height = 5
     base_width = sum(len(font[c][0]) + 1 for c in text)
-
 
     scale_x = max(1, usable_w // base_width)
     scale_y = max(1, usable_h // base_height)
@@ -138,12 +135,17 @@ def draw_centered(stdscr, lines):
             break
 
         try:
-            stdscr.addstr(y0 + i, x0, line[:w - 1])
+            stdscr.addstr(y0 + i, x0, line[: w - 1])
         except curses.error:
             pass
 
 
 def main(stdscr):
+    curses.start_color()
+    curses.use_default_colors()
+    curses.init_pair(1, curses.COLOR_BLUE, -1)
+
+    stdscr.attron(curses.color_pair(1))
     curses.curs_set(0)
     stdscr.nodelay(True)
 
@@ -161,6 +163,7 @@ def main(stdscr):
             break
 
         time.sleep(0.1)
+    stdscr.attroff(curses.color_pair(1))
 
 
 if __name__ == "__main__":

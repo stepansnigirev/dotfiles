@@ -11,9 +11,9 @@ Currently accounts are hardcoded, because I'm lazy.
 
 Also plays sound on error or on new emails using mpv.
 """
-import os
+
 import asyncio
-from typing import Optional, List, Tuple
+import os
 
 DIRNAME = os.path.abspath(os.path.expanduser("~/mail"))
 UNREAD_FILE = os.path.join(DIRNAME, "unread")
@@ -21,11 +21,10 @@ ERRORS_FILE = os.path.join(DIRNAME, "errors")
 NOTIFICATIONS_FILE = os.path.join(DIRNAME, "notifications")
 ACCOUNTS = ["personal", "planqc", "swan"]
 
-async def run_command(command: str) -> Tuple[int, bytes, bytes]:
+
+async def run_command(command: str) -> tuple[int | None, bytes, bytes]:
     process = await asyncio.create_subprocess_shell(
-        command,
-        stdout=asyncio.subprocess.PIPE,
-        stderr=asyncio.subprocess.PIPE
+        command, stdout=asyncio.subprocess.PIPE, stderr=asyncio.subprocess.PIPE
     )
     stdout, stderr = await process.communicate()
     print(f"{command} done: returncode: {process.returncode}")
@@ -34,7 +33,7 @@ async def run_command(command: str) -> Tuple[int, bytes, bytes]:
     return process.returncode, stdout, stderr
 
 
-async def sync_account(account: Optional[str] = None) -> Tuple[int, bytes, bytes]:
+async def sync_account(account: str | None = None) -> tuple[int | None, bytes, bytes]:
     """Syncs one account, returns a tuple (returncode, stdout, stderr)"""
     command = "offlineimap"
     if account:
@@ -43,29 +42,27 @@ async def sync_account(account: Optional[str] = None) -> Tuple[int, bytes, bytes
     return await run_command(command)
 
 
-async def sync_all(accounts: List[str] = ACCOUNTS):
-    tasks = [
-        asyncio.create_task(sync_account(account))
-        for account in accounts
-    ]
+async def sync_all(accounts: list[str] = ACCOUNTS):
+    tasks = [asyncio.create_task(sync_account(account)) for account in accounts]
     results = await asyncio.gather(*tasks)
     # filter out successful runs
     errors = [r for r in results if r[0] != 0]
     return errors
 
 
-def check_unread(dir_path = DIRNAME):
+def check_unread(dir_path=DIRNAME):
     threads = set()
     unread = 0
-    for root, dirs, files in os.walk(dir_path):
-        if 'new' in dirs and "inbox" in root.lower():
-            new_folder_path = os.path.join(root, 'new')
+    for root, dirs, _files in os.walk(dir_path):
+        if "new" in dirs and "inbox" in root.lower():
+            new_folder_path = os.path.join(root, "new")
             delta = 0
             for filename in os.listdir(new_folder_path):
                 threads.add(filename.split("_")[0])
                 delta += 1
             unread += delta
     return len(threads), unread
+
 
 async def main():
     sync_errors = await sync_all(ACCOUNTS)
@@ -76,10 +73,7 @@ async def main():
                 f.write(stdout)
                 f.write(stderr)
     else:
-        res = [
-            check_unread(os.path.join(DIRNAME, acc))[0]
-            for acc in ACCOUNTS
-        ]
+        res = [check_unread(os.path.join(DIRNAME, acc))[0] for acc in ACCOUNTS]
         with open(ERRORS_FILE, "w") as f:
             f.write("")
         with open(UNREAD_FILE, "r") as f:
@@ -93,9 +87,10 @@ async def main():
             prevres = sum([int(v) for v in prev.split("/")])
         if prevres < sum(res):
             # notify zmux
-            new_emails = sum(res)-prevres
+            new_emails = sum(res) - prevres
             with open(NOTIFICATIONS_FILE, "w") as f:
-                f.write(f"{new_emails} new emails!") 
+                f.write(f"{new_emails} new emails!")
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     asyncio.run(main())

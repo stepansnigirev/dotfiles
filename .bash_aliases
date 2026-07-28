@@ -5,7 +5,7 @@ alias mpa="mpv --no-video --input-ipc-server=/tmp/mpvsocket"
 alias mpb="mpv --no-video --input-ipc-server=/tmp/mpvsocket --ao=alsa --audio-device=alsa/bluealsa"
 alias mpy="mpv --no-video --input-ipc-server=/tmp/mpvsocket --ao=alsa --audio-device=alsa/bluealsa ym://wave"
 alias ls="eza"
-alias cat="batcat"
+alias cat="bat"
 alias icat="viu"
 # my tool for viewing images, numpy arrays etc
 alias lv="liveview"

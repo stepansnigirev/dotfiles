@@ -1,4 +1,4 @@
-# NeoVim
+# Dotfiles
 
 ## Set config
 
@@ -16,9 +16,9 @@ unzip JetBrainsMono.zip -d ~/.fonts
 fc-cache -fv
 ```
 
-## LSP config
+## Neovim LSP config
 
-Python: uses `ruff`, install with `uv`, `pip` or `pipx`
+Python: uses `ruff` and `ty`, install with `uv`, `pip` or `pipx`
 
 # Toolz
 

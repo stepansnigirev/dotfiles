@@ -1,6 +1,6 @@
 set $mod Mod4
 
-font pango:JetBrainsMono NerdFont 10
+font pango:JetBrainsMono NerdFont 12
 
 # remove title
 for_window [class="^.*"] border pixel 0
@@ -20,7 +20,7 @@ exec --no-startup-id dex --autostart --environment i3
 
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
-exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork -c 0a0b16
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
@@ -191,7 +191,8 @@ set $sky #89dceb
 set $sapphire #74c7ec
 set $blue #89b4fa
 set $lavender #b4befe
-set $text #cdd6f4
+#set $text #cdd6f4
+set $text #828BB8
 set $subtext1 #bac2de
 set $subtext0 #a6adc8
 set $overlay2 #9399b2
@@ -200,7 +201,8 @@ set $overlay0 #6c7086
 set $surface2 #585b70
 set $surface1 #45475a
 set $surface0 #313244
-set $base #1e1e2e
+#set $base #1e1e2e
+set $base #000000
 set $mantle #181825
 set $crust #11111b
 
@@ -215,6 +217,8 @@ client.background        $base
 
 # bar
 bar {
+    mode hide
+    padding -4px 14px -4px 0px
     status_command i3status
     colors {
         background         $base

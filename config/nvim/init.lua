@@ -67,6 +67,11 @@ vim.opt.foldlevel = 99
 vim.opt.foldlevelstart = 99
 vim.opt.foldcolumn = "0"
 
+-- netrw
+vim.opt.wildmenu = true
+vim.opt.wildmode = "longest:full,full"
+vim.opt.path:append("**")
+
 -- Colorscheme
 vim.opt.background = "dark"
 
@@ -156,7 +161,7 @@ local function apply_custom_colors()
     -- brackets
     set_style("MatchParen", { fg = colors.highlight, bg = colors.bg })
     -- Markdown
-    set_style("Title", { fg = colors.h1, bold = true })
+    set_style("Title", { bg = colors.h1, fg = colors.fg, bold = true })
     set_style("@markup.heading.2.markdown", { fg = colors.h2, bold = false })
     set_style("@markup.heading.3.markdown", { fg = colors.string, bold = true })
 end

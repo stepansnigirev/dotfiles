@@ -91,6 +91,7 @@ vim.api.nvim_create_autocmd("FileType", {
 vim.pack.add({ "https://github.com/catgoose/nvim-colorizer.lua" })
 require("colorizer").setup({
     options = {
+        parsers = { names = { enable = false } },
         display = {
             mode = "virtualtext",
             virtualtext = {

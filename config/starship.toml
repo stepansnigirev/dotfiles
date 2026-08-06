@@ -1,6 +1,5 @@
 format = """
 $battery\
-${custom.todo}\
 $username\
 $hostname\
 $directory\
@@ -39,26 +38,3 @@ threshold = 25
 style = 'bold red'
 discharging_symbol = " "
 
-[custom.mail]
-style = "dimmed white"
-symbol = "󰇮"
-# checks and outputs content of the ~/mail/unread file (populated by the sync script)
-command = "grep '[^[:space:]]'  ~/mail/unread"
-when = "test -s ~/mail/unread"
-format = "[$symbol $output ]($style)"
-
-[custom.mailerr]
-style = "red"
-symbol = ""
-# checks if ~/mail/errors file is not empty (populated by sync script)
-when = "test -s ~/mail/errors"
-format = "[$symbol  ]($style)"
-
-[custom.todo]
-detect_files = ["TODO.md"]
-style = "dimmed white"
-symbol = ""
-# todo_summary greps TODO.md file and counts number of completed tasks "- [x]" vs total
-# (cat <(grep -c '\- \[[x+]\]'  TODO.md) <(echo '/') <(grep -c '\- \[[x+ ]\]' TODO.md)) | tr -d '\n'
-command = "todo_summary"
-format = "[$symbol $output ]($style)"
